@@ -1,23 +1,27 @@
-import { AppLib } from "./app-core/lib";
-import React from "react";
-import ReactDOM from "react-dom";
+/* eslint-disable */
 
-let appLib = new AppLib();
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { AppLib } from './app-core/lib'
+import { Document } from './views'
+
+const appLib = new AppLib()
+
+const navigationPage = {
+  document: <Document />,
+}['document']
 
 let myapp = {
   myfunction: function () {
-    ReactDOM.render(
-      <div>Hello World My Friend From Another wWWWorld</div>,
-      document.getElementById("app")
-    );
+    ReactDOM.render(navigationPage, document.getElementById('app'))
   },
-};
+}
 
 Neutralino.init({
   load: function () {
-    myapp.myfunction();
-    appLib.showSettings();
+    myapp.myfunction()
+    appLib.showSettings()
   },
   pingSuccessCallback: function () {},
   pingFailCallback: function () {},
-});
+})
