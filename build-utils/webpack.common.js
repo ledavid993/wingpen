@@ -22,10 +22,15 @@ module.exports = {
           'css-loader',
         ],
       },
+      {
+        test: /\.ts(x)?$/,
+        use: ['awesome-typescript-loader'],
+        exclude: /node_modules/,
+      },
     ],
   },
   resolve: {
-    extensions: ['*', '.js', '.jsx'],
+    extensions: ['*', '.js', '.jsx', '.tsx', '.ts'],
   },
   output: {
     filename: '[name].js',
