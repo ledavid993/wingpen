@@ -14,13 +14,26 @@ module.exports = {
         use: ['babel-loader', 'eslint-loader'],
       },
       {
-        test: /\.css$/i,
+        test: /\.css$/,
         use: [
+          'style-loader',
           {
-            loader: MiniCssExtractPlugin.loader,
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              modules: {
+                mode: 'local',
+                localIdentName: '[name]__[local]--[hash:base64:5]',
+              },
+            },
           },
-          'css-loader',
         ],
+        include: /\.module\.css$/,
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+        exclude: /\.module\.css$/,
       },
       {
         test: /\.ts(x)?$/,
