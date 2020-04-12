@@ -50,18 +50,17 @@ class MenuView {
 }
 
 const MenuView2 = (items, editorView) => {
-  return(
-    <div>
-      {items.map({command, dom} => {
-        let active = command(editorView.state, null, editorView)
-        return(
-          <div>
-            {dom}
-          </div>
-        )
-      } )}
-    </div>
-  )
+  let dom = document.createElement('div')
+  dom.innerText = 'Hello'
+
+  let root = (ReactDOM as any).createRoot(dom)
+
+  console.log(root)
+
+  return({
+    dom,
+    editorView
+  })
 }
 
 function menuPlugin2(items) {
@@ -69,7 +68,7 @@ function menuPlugin2(items) {
 
   return new Plugin({
     view(editorView) {
-      let menuView = new MenuView(items, editorView)
+      let menuView = MenuView2(items, editorView)
       console.log(
         'insert',
         editorView.dom.parentNode.insertBefore(menuView.dom, editorView.dom),
