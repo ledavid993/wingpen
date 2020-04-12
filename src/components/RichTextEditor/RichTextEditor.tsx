@@ -13,8 +13,6 @@ const initialValue = {
 const RichTextEditor = () => {
   const [value, setValue] = useState(initialValue)
 
-  console.log(value)
-
   return (
     <div className={styles.wrapper}>
       <Container bg="gray.100">
