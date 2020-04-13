@@ -57,8 +57,14 @@ const menuPlugin = (items: Array<Item>) => {
       e.preventDefault()
       editorView.focus()
       items.forEach(({ command, dom }) => {
-        if (dom.contains(e.target))
-          command(editorView.state, editorView.dispatch, editorView)
+        if (dom.contains(e.target)) {
+          if (!dom.classList.contains('active')) {
+            dom.classList.add('active')
+          } else {
+            dom.classList.remove('active')
+          }
+          return command(editorView.state, editorView.dispatch, editorView)
+        }
       })
     })
 
