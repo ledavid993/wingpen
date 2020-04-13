@@ -2,3 +2,16 @@ div[class^='ProseMirror'] {
   background: white;
   padding: 8px;
 }
+
+div[class='menubar'] {
+  display: flex;
+  justify-content: flex-end;
+}
+
+span[class^='menuicon'] {
+  padding: 5px;
+}
+
+div span[class*='active'] {
+  color: red;
+}

@@ -1,3 +1,3 @@
-import { useEventListener } from './customHooks.ts'
+import { useEventListener } from './customHooks'
 
 export { useEventListener }

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Plugin } from 'prosemirror-state'
 import clsx from 'clsx'
 import { toggleMark, setBlockType, wrapIn } from 'prosemirror-commands'
@@ -8,6 +8,7 @@ import { jsxToNode } from '../../../utils'
 interface Props {
   items: Array<Item>
   editorView: any
+  dom: any
 }
 
 type Item = {
@@ -15,27 +16,42 @@ type Item = {
   dom: HTMLSpanElement
 }
 
-const MenuBarNode: React.FC<Props> = ({ items }) => {
-  return (
-    <div>
-      {items.map(({ dom }) => {
-        return (
-          <span
-            key={dom.title}
-            className={clsx('menubar', dom.title)}
-            id={dom.title}
-          >
-            {dom.innerText}
-          </span>
-        )
-      })}
-    </div>
-  )
-}
+// const MenuBarNode: React = ({ items, editorView }) => {
+//   useEffect(() => {
+//     console.log('check')
+//   }, [editorView])
+
+//   return (
+//     <div className="menubar">
+//       {items.map(({ dom, command }) => {
+//         return (
+//           <span
+//             key={dom.title}
+//             className={clsx(
+//               'menuicon',
+//               dom.title,
+//               styles.hidden && command(editorView.state, null, editorView),
+//             )}
+//             id={dom.title}
+//           >
+//             {dom.innerText}
+//           </span>
+//         )
+//       })}
+//     </div>
+//   )
+// }
 
 const menuPlugin = (items: Array<Item>) => {
   const getNodeFromComponent = (editorView: any) => {
-    let dom = jsxToNode(<MenuBarNode items={items} editorView={editorView} />)
+    // let dom = jsxToNode(<MenuBarNode items={items} editorView={editorView} />)
+
+    items = items
+    editorView = editorView
+
+    let dom = document.createElement('div')
+    dom.className = 'menubar'
+    items.forEach(({ dom: childDOM }) => dom.appendChild(childDOM))
 
     dom.addEventListener('mousedown', (e: any) => {
       e.preventDefault()
@@ -56,6 +72,7 @@ const menuPlugin = (items: Array<Item>) => {
     view(editorView): any {
       console.log(editorView.state)
       let menuView = getNodeFromComponent(editorView)
+      console.log(editorView.state)
       editorView?.dom?.parentNode?.insertBefore(menuView.dom, editorView.dom)
       return menuView
     },
