@@ -10,6 +10,8 @@ import prosemirrorDevTools from 'prosemirror-dev-tools'
 import React, { useCallback, useState, useEffect, useMemo, useRef } from 'react'
 import menu from './MenuBar'
 
+import styles from './RichTextEditor.module.css'
+
 interface Props {
   defaultValue: object
   onChange: any
@@ -58,9 +60,9 @@ const Prosemirror: React.FC<Props> = ({ defaultValue, onChange }) => {
   }, [state, handleChange])
 
   return (
-    <Box rounded="md" borderWidth="1px" p={4}>
+    <div className={styles.pmContainer}>
       <div ref={editorViewRef} />
-    </Box>
+    </div>
   )
 }
 

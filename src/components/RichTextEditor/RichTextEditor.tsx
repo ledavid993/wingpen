@@ -10,16 +10,12 @@ const initialValue = {
   content: [{ type: 'paragraph', content: '' }],
 }
 
-const RichTextEditor = () => {
+const RichTextEditor: React.FC = () => {
   const [value, setValue] = useState(initialValue)
 
   return (
     <div className={styles.wrapper}>
-      <Container bg="gray.100" height="calc(94vh + 11px)">
-        <Box>
-          <Prosemirror defaultValue={initialValue} onChange={setValue} />
-        </Box>
-      </Container>
+      <Prosemirror defaultValue={initialValue} onChange={setValue} />
     </div>
   )
 }

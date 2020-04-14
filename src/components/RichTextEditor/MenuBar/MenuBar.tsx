@@ -87,9 +87,6 @@ const menu = menuPlugin([
     command: setBlockType(schema.nodes.paragraph),
     dom: icon('', 'paragraph'),
   },
-  heading(1),
-  heading(2),
-  heading(3),
 ])
 
 export default menu

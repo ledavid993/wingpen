@@ -1,8 +1,19 @@
+.wrapper {
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.pmContainer {
+  height: calc(100vh - 48px);
+  padding: 15px;
+  box-sizing: border-box;
+}
+
 div[class^='ProseMirror'] {
   background: white;
-  padding: 8px;
-  height: calc(87vh - 3px);
+  padding: 16px 32px;
   overflow-y: auto;
+  height: calc(100vh - 134px);
 }
 
 div[class='menubar'] {

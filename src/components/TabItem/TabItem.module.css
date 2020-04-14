@@ -1,0 +1,45 @@
+.container {
+  box-sizing: border-box;
+  margin: 25px auto;
+}
+
+.header {
+  margin: 0 10px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.header .slider {
+  background: rgba(0, 0, 0, 0.3);
+  height: 15px;
+  margin-top: 8px;
+  border-radius: 2px;
+  text-align: center;
+  color: white;
+}
+
+.title {
+  text-align: center;
+}
+
+.title span:last-child {
+  padding-left: 20px;
+}
+
+.itemsContainer {
+  background: white;
+  margin: 0 10px;
+}
+
+.innerContainer {
+  display: flex;
+}
+
+.indent {
+  background: rgba(0, 0, 0, 0.3);
+  height: auto;
+  width: 25px;
+}
+
+.items {
+  padding-left: 20px;
+}
