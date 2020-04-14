@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { isEmpty } from 'ramda'
+import { contains, without } from 'ramda'
 import { useSpring, animated } from 'react-spring'
 import { FaBook } from 'react-icons/fa'
 import { IoMdArrowDropdown, IoMdArrowDropup } from 'react-icons/io'
@@ -21,14 +21,33 @@ const TabItem: React.FC<Props> = ({
   onTabClick,
   project,
 }) => {
+  const { tasks } = project
+  const [isSubTask, setIsSubTask] = useState(false)
+  const [openTask, setOpenTask] = useState<any>([])
   const isOpen = whichProjectView === name
+
+  const onTaskClick = (category: string) => {
+    if (!contains(category, openTask)) {
+      setOpenTask((oldOpenTask: any) => [...oldOpenTask, category])
+    } else {
+      setOpenTask((oldOpenTask: any) => without(category, oldOpenTask))
+    }
+  }
+
+  console.log(openTask)
+
   const contentProps = useSpring({
     opacity: isOpen ? 1 : 0,
     transform: isOpen ? `translateX(0)` : `translateX(10%)`,
     display: 'flex',
     justifyContent: 'flex-end',
   })
-  const { tasks } = project
+  const subTaskStyle = useSpring({
+    opacity: isOpen ? 1 : 0,
+    transform: isOpen ? `translateX(0)` : `translateX(10%)`,
+    display: 'flex',
+    justifyContent: 'flex-end',
+  })
 
   return (
     <>
@@ -46,9 +65,16 @@ const TabItem: React.FC<Props> = ({
       {isOpen
         ? tasks.map((task: any) => {
             return (
-              <animated.div style={contentProps}>
-                <Task category={task.category} />
-              </animated.div>
+              <div className={styles.taskList}>
+                <animated.div style={contentProps}>
+                  <Task category={task.category} onTaskClick={onTaskClick} />
+                </animated.div>
+                {contains(task.category, openTask) ? (
+                  <animated.div style={subTaskStyle}>
+                    <Task subTask />
+                  </animated.div>
+                ) : null}
+              </div>
             )
           })
         : null}

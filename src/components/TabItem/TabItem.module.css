@@ -33,3 +33,9 @@
 .title svg {
   color: purple;
 }
+
+.taskList {
+  display: flex;
+  flex-direction: column;
+  margin: 6px 0;
+}
