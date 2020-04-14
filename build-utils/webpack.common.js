@@ -40,6 +40,17 @@ module.exports = {
         use: ['awesome-typescript-loader'],
         exclude: /node_modules/,
       },
+      {
+        test: /\.png$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              mimetype: 'image/png',
+            },
+          },
+        ],
+      },
     ],
   },
   resolve: {

@@ -2,19 +2,15 @@ import React from 'react'
 import { Box, ThemeProvider, CSSReset } from '@chakra-ui/core'
 
 import { RichTextEditor, TabItem } from '../../components'
-import theme from '../../theme'
+
+import styles from './Document.module.css'
 
 const Document = () => {
   return (
-    <ThemeProvider theme={theme}>
-      <Box height="3em">Wingpen</Box>
-      <Box display="grid" gridTemplateColumns="25% 75%">
-        <Box bg="#40E0D010">
-          <TabItem name="manuscript" items={['item']} />
-        </Box>
-        <RichTextEditor />
-      </Box>
-    </ThemeProvider>
+    <div className={styles.container}>
+      <h3>Shadow Virtualization</h3>
+      <RichTextEditor />
+    </div>
   )
 }
 

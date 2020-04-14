@@ -1,47 +1,58 @@
-import React from 'react'
-import { Box } from '@chakra-ui/core'
+import React, { useState } from 'react'
+import { isEmpty } from 'ramda'
+import { useSpring, animated } from 'react-spring'
 import { FaBook } from 'react-icons/fa'
-import { IoMdArrowDropdown } from 'react-icons/io'
+import { IoMdArrowDropdown, IoMdArrowDropup } from 'react-icons/io'
+
+import Task from '../Task'
+
 import styles from './TabItem.module.css'
 
 interface Props {
   name: string
-  items?: [string]
+  whichProjectView: string
+  onTabClick: (project: string) => void
+  project: any
 }
 
-type TabIcon = {
-  [name: string]: JSX.Element
-}
+const TabItem: React.FC<Props> = ({
+  name,
+  whichProjectView,
+  onTabClick,
+  project,
+}) => {
+  const isOpen = whichProjectView === name
+  const contentProps = useSpring({
+    opacity: isOpen ? 1 : 0,
+    transform: isOpen ? `translateX(0)` : `translateX(10%)`,
+    display: 'flex',
+    justifyContent: 'flex-end',
+  })
+  const { tasks } = project
 
-const TAB_ICON: TabIcon = {
-  manuscript: <FaBook />,
-}
-
-const TabItem: React.FC<Props> = ({ name, items }) => {
   return (
-    <div className={styles.container}>
-      <div className={styles.header}>
+    <>
+      <div className={styles.container} onClick={() => onTabClick(name)}>
         <div className={styles.title}>
-          <span>{TAB_ICON[name]}</span>
           <span>
-            <strong>{name}</strong>
+            <FaBook />
           </span>
+          {name}
         </div>
-        <div className={styles.slider}>
-          <IoMdArrowDropdown />
+        <div className={styles.icon}>
+          {isOpen ? <IoMdArrowDropup /> : <IoMdArrowDropdown />}
         </div>
       </div>
-      <div className={styles.itemsContainer}>
-        {items?.map((item) => {
-          return (
-            <div className={styles.innerContainer}>
-              <div className={styles.indent} />
-              <div className={styles.items}>{item}</div>
-            </div>
-          )
-        })}
-      </div>
-    </div>
+      {isOpen
+        ? tasks.map((task: any) => {
+            return (
+              <animated.div style={contentProps}>
+                <Task category={task.category} />
+              </animated.div>
+            )
+          })
+        : null}
+    </>
   )
 }
 

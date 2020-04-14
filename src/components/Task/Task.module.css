@@ -1,0 +1,26 @@
+.container {
+  height: 32px;
+  width: 90%;
+  background: white;
+  border-left: 5px solid #1acddd;
+  border-right: none;
+  padding: 12px;
+  font-weight: 700;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  margin: 6px 0;
+  border-radius: 5px 0 0 5px;
+}
+
+.container > div {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 12px 21px;
+}
+
+.container:hover {
+  cursor: pointer;
+  background: rgba(132, 213, 253, 0.1);
+}

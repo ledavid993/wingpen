@@ -3,13 +3,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { AppLib } from './app-core/lib'
-import { Document } from './views'
+import { Main } from './views'
 
 const appLib = new AppLib()
 
 const navigationPage = {
-  document: <Document />,
-}['document']
+  main: <Main />,
+}['main']
 
 let myapp = {
   myfunction: function () {
