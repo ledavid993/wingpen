@@ -15,7 +15,7 @@ const RichTextEditor = () => {
 
   return (
     <div className={styles.wrapper}>
-      <Container bg="gray.100">
+      <Container bg="gray.100" height="calc(94vh + 11px)">
         <Box>
           <Prosemirror defaultValue={initialValue} onChange={setValue} />
         </Box>

@@ -1,11 +1,13 @@
 div[class^='ProseMirror'] {
   background: white;
   padding: 8px;
+  height: calc(87vh - 3px);
+  overflow-y: auto;
 }
 
 div[class='menubar'] {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 
 span[class^='menuicon'] {
@@ -14,4 +16,9 @@ span[class^='menuicon'] {
 
 div span[class*='active'] {
   color: red;
+}
+
+.icon {
+  display: flex;
+  flex-direction: row;
 }

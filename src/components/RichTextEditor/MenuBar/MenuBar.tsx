@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, EventHandler } from 'react'
 import { Plugin } from 'prosemirror-state'
 import clsx from 'clsx'
 import { toggleMark, setBlockType, wrapIn } from 'prosemirror-commands'
 import { schema, nodes } from 'prosemirror-schema-basic'
 import { jsxToNode } from '../../../utils'
+import Icon from './Icon'
 
 interface Props {
   items: Array<Item>
@@ -16,70 +17,47 @@ type Item = {
   dom: HTMLSpanElement
 }
 
-// const MenuBarNode: React = ({ items, editorView }) => {
-//   useEffect(() => {
-//     console.log('check')
-//   }, [editorView])
+class MenuView {
+  items: Array<Item>
+  editorView: any
+  dom: HTMLElement
+  e: any
+  constructor(items: Array<Item>, editorView: any) {
+    this.items = items
+    this.editorView = editorView
 
-//   return (
-//     <div className="menubar">
-//       {items.map(({ dom, command }) => {
-//         return (
-//           <span
-//             key={dom.title}
-//             className={clsx(
-//               'menuicon',
-//               dom.title,
-//               styles.hidden && command(editorView.state, null, editorView),
-//             )}
-//             id={dom.title}
-//           >
-//             {dom.innerText}
-//           </span>
-//         )
-//       })}
-//     </div>
-//   )
-// }
+    this.dom = document.createElement('div')
+    this.dom.className = 'menubar'
+    items.forEach(({ dom }) => this.dom.appendChild(dom))
+    this.update()
 
-const menuPlugin = (items: Array<Item>) => {
-  const getNodeFromComponent = (editorView: any) => {
-    // let dom = jsxToNode(<MenuBarNode items={items} editorView={editorView} />)
-
-    items = items
-    editorView = editorView
-
-    let dom = document.createElement('div')
-    dom.className = 'menubar'
-    items.forEach(({ dom: childDOM }) => dom.appendChild(childDOM))
-
-    dom.addEventListener('mousedown', (e: any) => {
+    this.dom.addEventListener('mousedown', (e: any) => {
       e.preventDefault()
       editorView.focus()
       items.forEach(({ command, dom }) => {
-        if (dom.contains(e.target)) {
-          if (!dom.classList.contains('active')) {
-            dom.classList.add('active')
-          } else {
-            dom.classList.remove('active')
-          }
-          return command(editorView.state, editorView.dispatch, editorView)
-        }
+        if (dom.contains(e.target))
+          command(editorView.state, editorView.dispatch, editorView)
       })
     })
-
-    return {
-      dom,
-      editorView,
-    }
   }
 
+  update() {
+    this.items.forEach(({ command, dom }) => {
+      let active = command(this.editorView.state, null, this.editorView)
+      dom.style.display = active ? '' : 'none'
+    })
+  }
+
+  destroy() {
+    this.dom.remove()
+  }
+}
+
+const menuPlugin = (items: Array<Item>) => {
   return new Plugin({
     view(editorView): any {
-      console.log(editorView.state)
-      let menuView = getNodeFromComponent(editorView)
-      console.log(editorView.state)
-      editorView?.dom?.parentNode?.insertBefore(menuView.dom, editorView.dom)
+      let menuView = new MenuView(items, editorView)
+      editorView?.dom?.parentNode?.insertBefore(menuView?.dom, editorView.dom)
       return menuView
     },
   })
@@ -90,7 +68,7 @@ function icon(text: string | null, name: string) {
   let span = document.createElement('span')
   span.className = 'menuicon ' + name
   span.title = name
-  span.textContent = text
+  span.appendChild(jsxToNode(<Icon name={name} text={text} />))
   return span
 }
 
@@ -98,24 +76,20 @@ function icon(text: string | null, name: string) {
 function heading(level: string | number) {
   return {
     command: setBlockType(schema.nodes.heading, { level }),
-    dom: icon('H' + level, 'heading'),
+    dom: icon(level.toString(), 'heading'),
   }
 }
 
 const menu = menuPlugin([
-  { command: toggleMark(schema.marks.strong), dom: icon('B', 'strong') },
-  { command: toggleMark(schema.marks.em), dom: icon('i', 'em') },
+  { command: toggleMark(schema.marks.strong), dom: icon('', 'strong') },
+  { command: toggleMark(schema.marks.em), dom: icon('', 'em') },
   {
     command: setBlockType(schema.nodes.paragraph),
-    dom: icon('p', 'paragraph'),
+    dom: icon('', 'paragraph'),
   },
   heading(1),
   heading(2),
   heading(3),
-  {
-    command: wrapIn(schema.nodes.blockquote),
-    dom: icon('>', 'blockquote'),
-  },
 ])
 
 export default menu
