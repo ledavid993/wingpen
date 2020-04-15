@@ -1,0 +1,8 @@
+.tabHeader {
+  height: 66px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 15px;
+  box-sizing: border-box;
+}

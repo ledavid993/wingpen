@@ -14,7 +14,7 @@
     "baseUrl": ".",
     "paths": {
       "@views*": ["src/views/*"],
-      "@components*": ["src/components/*"],
+      "@components": ["src/components/*"],
       "@redux*": ["src/redux/*"],
       "@assets*": ["src/assets/*"],
       "@src*": ["src/*"],
