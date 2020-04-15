@@ -1,6 +1,7 @@
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const { TsConfigPathsPlugin } = require('awesome-typescript-loader')
 
 module.exports = {
   entry: {
@@ -14,23 +15,62 @@ module.exports = {
         use: ['babel-loader', 'eslint-loader'],
       },
       {
-        test: /\.css$/i,
+        test: /\.css$/,
         use: [
+          'style-loader',
           {
-            loader: MiniCssExtractPlugin.loader,
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              modules: {
+                mode: 'local',
+                localIdentName: '[name]__[local]--[hash:base64:5]',
+              },
+            },
           },
-          'css-loader',
+          'postcss-loader',
         ],
+        include: /\.module\.css$/,
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+        exclude: /\.module\.css$/,
       },
       {
         test: /\.ts(x)?$/,
         use: ['awesome-typescript-loader'],
         exclude: /node_modules/,
       },
+      {
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'fonts/',
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(png|jpg)$/,
+        use: [
+          {
+            loader: 'url-loader',
+          },
+        ],
+      },
     ],
   },
   resolve: {
     extensions: ['*', '.js', '.jsx', '.tsx', '.ts'],
+    plugins: [
+      new TsConfigPathsPlugin({
+        configFileName: path.resolve(__dirname, '../tsconfig.json'),
+      }),
+    ],
   },
   output: {
     filename: '[name].js',
