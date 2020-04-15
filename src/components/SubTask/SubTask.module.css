@@ -1,0 +1,14 @@
+.container {
+  background: white;
+  height: 32px;
+  border-left: 5px solid orange;
+  display: flex;
+  padding: 4px 20px;
+  align-items: center;
+  width: 80%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.container:hover {
+  background: rgba(255, 166, 0, 0.1);
+}

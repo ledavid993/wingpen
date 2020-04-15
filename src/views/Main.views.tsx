@@ -26,13 +26,13 @@ const Main = () => {
         <div className={styles.firstSidebar}>
           <img src={logo} />
         </div>
-        <Box bg="whitesmoke">
+        <div className={styles.msbWrapper}>
           <MiddleSideBar
             projects={projects}
             whichProjectView={whichProjectView}
             onTabClick={onTabClick}
           />
-        </Box>
+        </div>
         <DocumentView />
       </Box>
     </ThemeProvider>

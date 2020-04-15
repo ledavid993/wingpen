@@ -26,23 +26,20 @@ const TabItem: React.FC<Props> = ({
   const [openTask, setOpenTask] = useState<any>([])
   const isOpen = whichProjectView === name
 
-  const onTaskClick = (category: string) => {
-    if (!contains(category, openTask)) {
-      setOpenTask((oldOpenTask: any) => [...oldOpenTask, category])
-    } else {
-      setOpenTask((oldOpenTask: any) => without(category, oldOpenTask))
+  const onTaskClick = (type: string, category: string) => {
+    if (type === 'task') {
+      if (!contains(category, openTask)) {
+        setOpenTask((oldOpenTask: any) => [...oldOpenTask, category])
+      } else {
+        setOpenTask((oldOpenTask: any) => without(category, oldOpenTask))
+      }
+    }
+
+    if (type === 'subtask') {
     }
   }
 
-  console.log(openTask)
-
   const contentProps = useSpring({
-    opacity: isOpen ? 1 : 0,
-    transform: isOpen ? `translateX(0)` : `translateX(10%)`,
-    display: 'flex',
-    justifyContent: 'flex-end',
-  })
-  const subTaskStyle = useSpring({
     opacity: isOpen ? 1 : 0,
     transform: isOpen ? `translateX(0)` : `translateX(10%)`,
     display: 'flex',
@@ -67,13 +64,12 @@ const TabItem: React.FC<Props> = ({
             return (
               <div className={styles.taskList}>
                 <animated.div style={contentProps}>
-                  <Task category={task.category} onTaskClick={onTaskClick} />
+                  <Task
+                    task={task}
+                    onTaskClick={onTaskClick}
+                    openTask={openTask}
+                  />
                 </animated.div>
-                {contains(task.category, openTask) ? (
-                  <animated.div style={subTaskStyle}>
-                    <Task subTask />
-                  </animated.div>
-                ) : null}
               </div>
             )
           })

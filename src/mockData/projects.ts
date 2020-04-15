@@ -19,6 +19,10 @@ export default [
             name: 'Ian Dai',
             content: 'summary of Ian Dai',
           },
+          {
+            name: 'Silver Wolf',
+            content: 'summary of Silver Wolf',
+          },
         ],
       },
     ],
