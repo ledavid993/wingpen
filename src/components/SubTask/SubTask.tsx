@@ -6,7 +6,7 @@ import styles from './SubTask.module.css'
 
 interface Props {
   onTaskClick: (type: string, category: string) => any
-  items?: any
+  item: any
 }
 
 const SubTask: React.FC<Props> = ({ onTaskClick, item }) => {

@@ -3,21 +3,32 @@ import { Box, ThemeProvider, CSSReset } from '@chakra-ui/core'
 
 import { MiddleSideBar } from '../components'
 import DocumentView from './Document'
+import HomeView from './Home'
 import theme from '../theme'
 import logo from '../assets/logo.png'
 import data from '../mockData/projects'
 
 import styles from './Main.module.css'
 
+interface ContentView {
+  [contentView: string]: JSX.Element
+}
+
 const Main = () => {
   const [whichProjectView, toggleWhichProjectView] = useState('')
   const [projects, setProjects] = useState(data)
+  const [contentView, setContentView] = useState('home')
 
   const onTabClick = (project: string) => {
     toggleWhichProjectView(project)
     if (project === whichProjectView) {
       toggleWhichProjectView('')
     }
+  }
+
+  const CONTENT_VIEW: ContentView = {
+    document: <DocumentView />,
+    home: <HomeView />,
   }
 
   return (
@@ -33,7 +44,7 @@ const Main = () => {
             onTabClick={onTabClick}
           />
         </div>
-        <DocumentView />
+        {CONTENT_VIEW[contentView]}
       </Box>
     </ThemeProvider>
   )

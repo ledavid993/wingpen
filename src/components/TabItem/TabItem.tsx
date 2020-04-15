@@ -22,7 +22,6 @@ const TabItem: React.FC<Props> = ({
   project,
 }) => {
   const { tasks } = project
-  const [isSubTask, setIsSubTask] = useState(false)
   const [openTask, setOpenTask] = useState<any>([])
   const isOpen = whichProjectView === name
 

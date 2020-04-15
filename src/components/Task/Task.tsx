@@ -12,13 +12,20 @@ import { FaTasks } from 'react-icons/fa'
 interface Props {
   task: any
   onTaskClick: (type: string, category: string) => any
+  openTask: Array<string>
+}
+
+type Item = {
+  number: 1
+  name: 'First Chapter'
+  content: 'Content of Chapter'
 }
 
 const Task: React.FC<Props> = ({ task, onTaskClick, openTask }) => {
   const isSubTaskOpen = contains(task.category, openTask)
 
   const handleOnClick = () => {
-    onTaskClick('task', task.category)
+    onTaskClick('task', task?.category)
   }
 
   const subTaskStyle = useSpring({
@@ -37,7 +44,7 @@ const Task: React.FC<Props> = ({ task, onTaskClick, openTask }) => {
         </div>
       </div>
       {isSubTaskOpen
-        ? task.items.map((item) => (
+        ? task.items.map((item: any) => (
             <animated.div className={styles.subTask} style={subTaskStyle}>
               <SubTask onTaskClick={onTaskClick} item={item} />
             </animated.div>
