@@ -1,6 +1,7 @@
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const { TsConfigPathsPlugin } = require('awesome-typescript-loader')
 
 module.exports = {
   entry: {
@@ -27,6 +28,7 @@ module.exports = {
               },
             },
           },
+          'postcss-loader',
         ],
         include: /\.module\.css$/,
       },
@@ -41,6 +43,18 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'fonts/',
+            },
+          },
+        ],
+      },
+      {
         test: /\.(png|jpg)$/,
         use: [
           {
@@ -52,6 +66,11 @@ module.exports = {
   },
   resolve: {
     extensions: ['*', '.js', '.jsx', '.tsx', '.ts'],
+    plugins: [
+      new TsConfigPathsPlugin({
+        configFileName: path.resolve(__dirname, '../tsconfig.json'),
+      }),
+    ],
   },
   output: {
     filename: '[name].js',

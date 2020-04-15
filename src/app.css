@@ -1,0 +1,57 @@
+@font-face {
+  font-family: 'LibreBaskerville';
+  font-weight: 400;
+  font-style: normal;
+  src: url('./assets/font/LibreBaskerville/LibreBaskerville-Regular.ttf'),
+    format('ttf');
+}
+
+@font-face {
+  font-family: 'LibreBaskerville';
+  font-weight: 400;
+  font-style: italic;
+  src: url('./assets/font/LibreBaskerville/LibreBaskerville-Italic.ttf'),
+    format('ttf');
+}
+
+@font-face {
+  font-family: 'LibreBaskerville';
+  font-weight: 400;
+  font-style: bold;
+  src: url('./assets/font/LibreBaskerville/LibreBaskerville-Bold.ttf'),
+    format('ttf');
+}
+
+@font-face {
+  font-family: 'TitilliumWeb';
+  font-weight: 400;
+  font-style: normal;
+  src: url('./assets/font/TitilliumWeb/TitilliumWeb-Regular.ttf'), format('ttf');
+}
+
+@font-face {
+  font-family: 'TitilliumWeb';
+  font-weight: 400;
+  font-style: italic;
+  src: url('./assets/font/TitilliumWeb/TitilliumWeb-Italic.ttf'), format('ttf');
+}
+
+@font-face {
+  font-family: 'TitilliumWeb';
+  font-weight: 300;
+  font-style: normal;
+  src: url('./assets/font/TitilliumWeb/TitilliumWeb-Light.ttf'), format('ttf');
+}
+
+@font-face {
+  font-family: 'TitilliumWeb';
+  font-weight: 400;
+  font-style: bold;
+  src: url('./assets/font/LibreBaskerville/LibreBaskerville-Bold.ttf'),
+    format('ttf');
+}
+
+.app-wrapper {
+  font-family: 'TitilliumWeb';
+  color: rgba(0, 0, 0, 0.7);
+}

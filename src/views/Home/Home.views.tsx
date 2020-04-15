@@ -9,8 +9,13 @@ const Home = () => {
       <div>
         <img src={cover} />
       </div>
-      <div>
-        <h1>Welcome</h1>
+      <div className={styles.quote}>
+        <p>
+          <span>A</span>ny man who keeps working is not a failure. He may not be
+          a great writer, but if he applies the old-fashioned virtues of hard,
+          constant labor, he’ll eventually make some kind of career for himself
+          as writer.
+        </p>
       </div>
     </div>
   )

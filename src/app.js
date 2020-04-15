@@ -2,8 +2,12 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { Provider } from 'react-redux'
 import { AppLib } from './app-core/lib'
 import { Main } from './views'
+import store from './store'
+
+import './app.css'
 
 const appLib = new AppLib()
 
@@ -13,7 +17,12 @@ const navigationPage = {
 
 let myapp = {
   myfunction: function () {
-    ReactDOM.render(navigationPage, document.getElementById('app'))
+    ReactDOM.render(
+      <Provider store={store}>
+        <div className="app-wrapper">{navigationPage}</div>
+      </Provider>,
+      document.getElementById('app'),
+    )
   },
 }
 

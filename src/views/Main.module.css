@@ -1,16 +1,3 @@
-.firstSidebar {
-  border-right: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.firstSidebar img {
-  height: 52px;
-  width: 52px;
-  padding: 7px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .msbWrapper {
   background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
 }

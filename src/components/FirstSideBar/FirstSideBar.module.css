@@ -1,0 +1,41 @@
+.firstSidebar {
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.menu {
+  margin-top: 3em;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.item {
+  padding: 9px 0;
+}
+
+.item > svg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.item > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 9px;
+  font-weight: 400;
+}
+
+.item:hover {
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.firstSidebar img {
+  height: 52px;
+  width: 52px;
+  padding: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
