@@ -7,17 +7,7 @@ import styles from './MenuBar.module.css'
 const MenuBar = () => {
   return (
     <div className={styles.container}>
-      <div>
-        <div className={styles.button}>
-          <span>
-            <IoMdAddCircle color="white" />
-          </span>
-          <div>
-            <p>New</p>
-            <p>Project</p>
-          </div>
-        </div>
-      </div>
+      <div></div>
       <div>
         <div>Filter</div>
       </div>

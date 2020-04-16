@@ -45,8 +45,11 @@
 .emptyInput input {
   border-bottom: 1px solid rgba(0, 0, 0, 0.4);
   height: auto;
-  width: 55%;
+  max-width: 70%;
   padding: 3px;
+  text-align: center;
+  background: none;
+  border-radius: none;
 }
 
 .emptyAdd {
@@ -60,7 +63,7 @@
 }
 
 .emptyAdd:hover {
-  color: rgb(0, 217, 255);
+  color: rgba(0, 217, 255, 0.4);
 }
 
 .bookCover {
@@ -127,6 +130,14 @@
   -webkit-transform-style: preserve-3d;
   box-shadow: inset 4px 1px 3px #ffffff60, inset 0 -1px 2px #00000080,
     10px 0px 10px -5px #00000030;
+}
+
+.book:active .bookCover {
+  transform: perspective(2000px) rotateY(-80deg);
+  -webkit-transform: perspective(2000px) rotateY(-80deg);
+  border-right: 5px solid rgba(128, 128, 128, 0.493);
+  transition: all 0.1s ease-in-out;
+  -webkit-transition: all 0.1s ease-in-out;
 }
 
 .book:hover .effect {

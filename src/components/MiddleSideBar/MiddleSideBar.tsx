@@ -22,7 +22,7 @@ const MiddleSideBar: React.FC<Props> = ({
   whichProjectView,
 }) => {
   return (
-    <div>
+    <div className={styles.container}>
       <div className={styles.tabHeader}>Project</div>
       {projects.map((project: any) => (
         <TabItem

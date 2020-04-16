@@ -3,8 +3,8 @@
   "appport": "5006",
   "mode": "window",
   "window": {
-    "width": "1000",
-    "height": "700",
+    "width": "800",
+    "height": "600",
     "fullscreen": false
   }
 }

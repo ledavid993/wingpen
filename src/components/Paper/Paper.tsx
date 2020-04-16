@@ -26,6 +26,7 @@ const Paper: React.FC<Props> = ({ newBook }) => {
               placeholder="Enter Name"
               border="none"
               borderBottom="1px solid rgba(0, 0, 0, .8)"
+              borderRadius="none"
             />
           </div>
         </>
