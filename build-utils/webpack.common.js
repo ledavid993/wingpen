@@ -69,6 +69,7 @@ module.exports = {
     plugins: [
       new TsConfigPathsPlugin({
         configFileName: path.resolve(__dirname, '../tsconfig.json'),
+        baseUrl: './',
       }),
     ],
   },
