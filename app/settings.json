@@ -1,7 +1,7 @@
 {
-  "appname": "wingpen",
+  "appname": "Wingpen",
   "appport": "5006",
-  "mode": "window",
+  "mode": "browser",
   "window": {
     "width": "800",
     "height": "600",
