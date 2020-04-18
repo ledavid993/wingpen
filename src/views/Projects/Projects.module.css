@@ -7,4 +7,15 @@
   padding: 15px;
   flex-direction: column;
   height: 100%;
+  position: relative;
+}
+
+.banner {
+  position: absolute;
+  height: 50px;
+  width: 100%;
+  z-index: -10;
+  top: 0;
+  left: 0;
+  opacity: 0.2;
 }

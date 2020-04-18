@@ -43,7 +43,7 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.(woff(2)?|ttf|eot|svg|otf)(\?v=\d+\.\d+\.\d+)?$/,
+        test: /\.(woff(2)?|ttf|eot|otf)(\?v=\d+\.\d+\.\d+)?$/,
         use: [
           {
             loader: 'file-loader',
@@ -51,6 +51,14 @@ module.exports = {
               name: '[name].[ext]',
               outputPath: 'fonts/',
             },
+          },
+        ],
+      },
+      {
+        test: /\.(svg)$/,
+        use: [
+          {
+            loader: 'svg-inline-loader',
           },
         ],
       },

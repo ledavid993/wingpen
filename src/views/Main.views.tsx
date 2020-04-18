@@ -37,7 +37,7 @@ const Main = () => {
     <ThemeProvider theme={theme}>
       <Box
         display="grid"
-        gridTemplateColumns="66px 30% auto"
+        gridTemplateColumns="66px 20% auto"
         overflow="hidden"
         height="100vh"
       >
