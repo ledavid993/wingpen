@@ -8,25 +8,11 @@ import store from './store'
 
 import './app.css'
 
-const navigationPage = {
-  main: <Main />,
-}['main']
-
-let myapp = {
-  myfunction: function () {
-    ReactDOM.render(
-      <Provider store={store}>
-        <div className="app-wrapper">{navigationPage}</div>
-      </Provider>,
-      document.getElementById('app'),
-    )
-  },
-}
-
-Neutralino.init({
-  load: function () {
-    myapp.myfunction()
-  },
-  // pingSuccessCallback: function () {},
-  // pingFailCallback: function () {},
-})
+ReactDOM.render(
+  <Provider store={store}>
+    <div className="app-wrapper">
+      <Main />
+    </div>
+  </Provider>,
+  document.getElementById('app'),
+)
