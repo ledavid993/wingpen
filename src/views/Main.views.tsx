@@ -18,7 +18,7 @@ interface ContentView {
 const Main = () => {
   const [whichProjectView, toggleWhichProjectView] = useState('')
   const [projects, setProjects] = useState(data)
-  const [contentView, setContentView] = useState('projects')
+  const [contentView, setContentView] = useState('home')
 
   const onTabClick = (project: string) => {
     toggleWhichProjectView(project)
