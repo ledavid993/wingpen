@@ -1,20 +1,5 @@
-# neutralinojs-javascript
 
-Javascript starter project for Neutralinojs
+<div align="center">
+  <img src="https://ibb.co/S71m3wv"/>
+</div>
 
-## Get started
-
-Clone the repo 
-
-Install dependencies 
-
-```bash
-$ npm i
-```
-
-Bundle source files
-
-```bash
-$ npm run build
-```
-      
