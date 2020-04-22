@@ -2,5 +2,16 @@ import RichTextEditor from './RichTextEditor'
 import TabItem from './TabItem'
 import MiddleSideBar from './MiddleSideBar'
 import FirstSideBar from './FirstSideBar'
+import ProjectGrid from './ProjectGrid'
+import MenuBar from './MenuBar'
+import TaskGrid from './TaskGrid'
 
-export { RichTextEditor, TabItem, MiddleSideBar, FirstSideBar }
+export {
+  RichTextEditor,
+  TabItem,
+  MiddleSideBar,
+  FirstSideBar,
+  ProjectGrid,
+  MenuBar,
+  TaskGrid,
+}

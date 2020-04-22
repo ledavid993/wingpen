@@ -1,13 +1,18 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import { IoMdArrowDropdown, IoMdArrowDropup } from 'react-icons/io'
 import { contains } from 'ramda'
 import clsx from 'clsx'
 import { useSpring, animated } from 'react-spring'
+import { FaTasks } from 'react-icons/fa'
 
 import styles from './Task.module.css'
 
 import SubTask from '../SubTask'
-import { FaTasks } from 'react-icons/fa'
+
+import { mainActions } from '@redux/actions'
+
+const { setTaskItems } = mainActions
 
 interface Props {
   task: any
@@ -23,9 +28,11 @@ type Item = {
 
 const Task: React.FC<Props> = ({ task, onTaskClick, openTask }) => {
   const isSubTaskOpen = contains(task.category, openTask)
+  const dispatch = useDispatch()
 
   const handleOnClick = () => {
     onTaskClick('task', task?.category)
+    dispatch(setTaskItems(task.items))
   }
 
   const subTaskStyle = useSpring({

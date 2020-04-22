@@ -43,7 +43,7 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        test: /\.(woff(2)?|ttf|eot|otf)(\?v=\d+\.\d+\.\d+)?$/,
         use: [
           {
             loader: 'file-loader',
@@ -55,7 +55,15 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|jpg)$/,
+        test: /\.(svg)$/,
+        use: [
+          {
+            loader: 'svg-inline-loader',
+          },
+        ],
+      },
+      {
+        test: /\.(png|jpg|otf)$/,
         use: [
           {
             loader: 'url-loader',
@@ -69,6 +77,7 @@ module.exports = {
     plugins: [
       new TsConfigPathsPlugin({
         configFileName: path.resolve(__dirname, '../tsconfig.json'),
+        baseUrl: './',
       }),
     ],
   },
