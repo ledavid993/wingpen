@@ -17,7 +17,8 @@
       "@components/*": ["./src/components/*"],
       "@redux/*": ["./src/redux/*"],
       "@assets/*": ["./src/assets/*"],
-      "@utils/*": ["./src/utils/*"]
+      "@utils/*": ["./src/utils/*"],
+      "@mockData/*": ["./src/mockData/*"]
     }
   },
   "include": ["./src/**/*"]

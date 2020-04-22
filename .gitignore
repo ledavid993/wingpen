@@ -1,4 +1,3 @@
 node_modules
 .log
-app/assets/app.js
-app/assets/font
+app/assets

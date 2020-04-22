@@ -1,27 +1,36 @@
 import React, { useState } from 'react'
+import { filter } from 'ramda'
 import { Box, ThemeProvider, CSSReset } from '@chakra-ui/core'
+import { useSelector, useDispatch } from 'react-redux'
 
-import { MiddleSideBar, FirstSideBar } from '../components'
+import { MiddleSideBar, FirstSideBar, TaskGrid } from '../components'
 import DocumentView from './Document'
 import Projects from './Projects'
 import HomeView from './Home'
+import Tasks from './Tasks'
 import theme from '../theme'
 
-import data from '../mockData/projects'
-
 import styles from './Main.module.css'
+
+import { mainActions } from '@redux/actions'
+
+const { changeMainView } = mainActions
 
 interface ContentView {
   [contentView: string]: JSX.Element
 }
 
 const Main = () => {
+  const { selectedView, projects, selectedItems } = useSelector(
+    ({ main }: any) => main,
+  )
   const [whichProjectView, toggleWhichProjectView] = useState('')
-  const [projects, setProjects] = useState(data)
-  const [contentView, setContentView] = useState('home')
 
-  const onTabClick = (project: string) => {
+  const dispatch = useDispatch()
+
+  const onProjectClick = (project: string) => {
     toggleWhichProjectView(project)
+    dispatch(changeMainView('projects'))
     if (project === whichProjectView) {
       toggleWhichProjectView('')
     }
@@ -30,7 +39,8 @@ const Main = () => {
   const CONTENT_VIEW: ContentView = {
     document: <DocumentView />,
     home: <HomeView />,
-    projects: <Projects />,
+    projects: <Projects projects={projects} />,
+    tasks: <Tasks items={selectedItems} />,
   }
 
   return (
@@ -46,10 +56,10 @@ const Main = () => {
           <MiddleSideBar
             projects={projects}
             whichProjectView={whichProjectView}
-            onTabClick={onTabClick}
+            onProjectClick={onProjectClick}
           />
         </div>
-        {CONTENT_VIEW[contentView]}
+        {CONTENT_VIEW[selectedView]}
       </Box>
     </ThemeProvider>
   )

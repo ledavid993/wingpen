@@ -3,46 +3,17 @@ import React from 'react'
 import styles from './ProjectGrid.module.css'
 import Paper from '../Paper'
 
-const arr = [
-  '1',
-  '2',
-  '3',
-  '4',
-  '5',
-  '6',
-  '7',
-  '8',
-  '9',
-  '1',
-  '2',
-  '3',
-  '4',
-  '5',
-  '6',
-  '7',
-  '8',
-  '9',
-  '1',
-  '2',
-  '3',
-  '4',
-  '5',
-  '6',
-  '7',
-  '8',
-  '9',
-]
-
 interface Props {
   onAddProject: () => void
+  projects: any
 }
 
-const ProjectGrid: React.FC<Props> = ({ onAddProject }) => {
+const ProjectGrid: React.FC<Props> = ({ onAddProject, projects }) => {
   return (
     <div className={styles.container} onClick={() => onAddProject()}>
       <Paper newBook />
-      {arr.map((e) => (
-        <Paper />
+      {projects.map((project: any) => (
+        <Paper project={project} />
       ))}
     </div>
   )

@@ -6,7 +6,7 @@ import styles from './MiddleSideBar.module.css'
 
 interface Props {
   projects?: any
-  onTabClick: (project: string) => void
+  onProjectClick: (project: string) => void
   whichProjectView: string
 }
 
@@ -18,7 +18,7 @@ interface Item {
 
 const MiddleSideBar: React.FC<Props> = ({
   projects,
-  onTabClick,
+  onProjectClick,
   whichProjectView,
 }) => {
   return (
@@ -29,7 +29,7 @@ const MiddleSideBar: React.FC<Props> = ({
           name={project.project_name}
           project={project}
           whichProjectView={whichProjectView}
-          onTabClick={onTabClick}
+          onProjectClick={onProjectClick}
         />
       ))}
     </div>

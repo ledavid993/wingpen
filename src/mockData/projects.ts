@@ -52,7 +52,7 @@ export default [
     ],
   },
   {
-    project_name: 'Shadow Virtualization',
+    project_name: 'Pikachu Shadow Virtualization Shadow Virtualization',
     tasks: [
       {
         category: 'chapters',
@@ -80,7 +80,7 @@ export default [
     ],
   },
   {
-    project_name: 'Solo Leveling',
+    project_name: 'Charmander',
     tasks: [
       {
         category: 'chapter',
@@ -104,7 +104,7 @@ export default [
     ],
   },
   {
-    project_name: 'Shadow Virtualization',
+    project_name: 'Ainz',
     tasks: [
       {
         category: 'chapters',
@@ -132,7 +132,7 @@ export default [
     ],
   },
   {
-    project_name: 'Solo Leveling',
+    project_name: 'Star Wars',
     tasks: [
       {
         category: 'chapter',
@@ -156,7 +156,7 @@ export default [
     ],
   },
   {
-    project_name: 'Shadow Virtualization',
+    project_name: 'Warcraft',
     tasks: [
       {
         category: 'chapters',
@@ -184,7 +184,7 @@ export default [
     ],
   },
   {
-    project_name: 'Solo Leveling',
+    project_name: 'Runescape',
     tasks: [
       {
         category: 'chapter',
@@ -208,7 +208,7 @@ export default [
     ],
   },
   {
-    project_name: 'Shadow Virtualization',
+    project_name: 'Bless Online',
     tasks: [
       {
         category: 'chapters',
@@ -236,7 +236,7 @@ export default [
     ],
   },
   {
-    project_name: 'Solo Leveling',
+    project_name: 'Reverend Insanity',
     tasks: [
       {
         category: 'chapter',

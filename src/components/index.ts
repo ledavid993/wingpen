@@ -4,6 +4,7 @@ import MiddleSideBar from './MiddleSideBar'
 import FirstSideBar from './FirstSideBar'
 import ProjectGrid from './ProjectGrid'
 import MenuBar from './MenuBar'
+import TaskGrid from './TaskGrid'
 
 export {
   RichTextEditor,
@@ -12,4 +13,5 @@ export {
   FirstSideBar,
   ProjectGrid,
   MenuBar,
+  TaskGrid,
 }

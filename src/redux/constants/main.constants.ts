@@ -1,0 +1,2 @@
+export const CHANGE_MAIN_VIEW = 'CHANGE_MAIN_VIEW'
+export const SET_TASK_ITEMS = 'SET_TASK_ITEMS'

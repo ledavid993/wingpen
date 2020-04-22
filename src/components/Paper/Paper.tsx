@@ -1,15 +1,23 @@
 import React from 'react'
 import clsx from 'clsx'
+import { useDispatch } from 'react-redux'
 import { InputGroup, InputLeftElement, Input } from '@chakra-ui/core'
 import { FaBook } from 'react-icons/fa'
 
 import styles from './Paper.module.css'
 
+import { mainActions } from '@redux/actions'
+
+const { changeMainView } = mainActions
+
 type Props = {
   newBook?: boolean
+  project?: any
 }
 
-const Paper: React.FC<Props> = ({ newBook }) => {
+const Paper: React.FC<Props> = ({ newBook, project }) => {
+  const dispatch = useDispatch()
+
   const renderBookView = () => {
     if (newBook) {
       return (
@@ -35,14 +43,17 @@ const Paper: React.FC<Props> = ({ newBook }) => {
 
     return (
       <>
-        <div className={styles.book}>
+        <div
+          className={styles.book}
+          onClick={() => dispatch(changeMainView('document'))}
+        >
           <div className={clsx(styles.bookCover, styles.cover1)}>
             <div className={styles.effect}></div>
             <div className={styles.light}></div>
           </div>
           <div className={styles.bookInside}></div>
         </div>
-        <div className={styles.bookTitle}>Title</div>
+        <div className={styles.bookTitle}>{project.project_name}</div>
       </>
     )
   }
