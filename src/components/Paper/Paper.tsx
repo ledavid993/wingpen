@@ -45,7 +45,7 @@ const Paper: React.FC<Props> = ({ newBook, project }) => {
       <>
         <div
           className={styles.book}
-          onClick={() => dispatch(changeMainView('document'))}
+          onClick={() => dispatch(changeMainView('tasks'))}
         >
           <div className={clsx(styles.bookCover, styles.cover1)}>
             <div className={styles.effect}></div>

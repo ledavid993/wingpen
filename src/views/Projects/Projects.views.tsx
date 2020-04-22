@@ -2,10 +2,7 @@ import React, { useState } from 'react'
 import { useTransition, animated } from 'react-spring'
 import { ProjectGrid, MenuBar } from '@components/index'
 
-import Banner from '@assets/banner.svg'
-
 import styles from './Projects.module.css'
-import SVG from 'react-inlinesvg'
 
 interface Props {
   projects: any
@@ -23,20 +20,11 @@ const Project: React.FC<Props> = ({ projects }) => {
 
   return (
     <div className={styles.container}>
-      <h3>Project</h3>
-      <MenuBar />
       {transitions.map(({ item, props, key }) => (
         <animated.div key={key} style={props}>
           <ProjectGrid onAddProject={handleAddProject} projects={projects} />
         </animated.div>
       ))}
-
-      <div className={styles.banner}>
-        <SVG src={Banner} />
-      </div>
-      <div className={styles.banner2}>
-        <SVG src={Banner} />
-      </div>
     </div>
   )
 }

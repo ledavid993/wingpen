@@ -28,4 +28,14 @@
   font-size: 32px;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+}
+
+.letter p:first-child {
+  font-size: 24px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.letter:hover {
+  cursor: pointer;
 }

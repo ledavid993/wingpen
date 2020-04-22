@@ -1,15 +1,23 @@
 import React, { useState } from 'react'
 import { filter } from 'ramda'
-import { Box, ThemeProvider, CSSReset } from '@chakra-ui/core'
+import {
+  Box,
+  ThemeProvider,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+} from '@chakra-ui/core'
 import { useSelector, useDispatch } from 'react-redux'
+import SVG from 'react-inlinesvg'
 
-import { MiddleSideBar, FirstSideBar, TaskGrid } from '../components'
+import { MiddleSideBar, FirstSideBar, MenuBar } from '../components'
 import DocumentView from './Document'
 import Projects from './Projects'
 import HomeView from './Home'
 import Tasks from './Tasks'
 import theme from '../theme'
 
+import Banner from '@assets/banner.svg'
 import styles from './Main.module.css'
 
 import { mainActions } from '@redux/actions'
@@ -21,6 +29,7 @@ interface ContentView {
 }
 
 const Main = () => {
+  const [breadCrumb, setBreadCrumb] = useState()
   const { selectedView, projects, selectedItems } = useSelector(
     ({ main }: any) => main,
   )
@@ -59,7 +68,15 @@ const Main = () => {
             onProjectClick={onProjectClick}
           />
         </div>
-        {CONTENT_VIEW[selectedView]}
+        <div className={styles.cView}>
+          <Breadcrumb>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="#">Home</BreadcrumbLink>
+            </BreadcrumbItem>
+          </Breadcrumb>
+          <MenuBar />
+          {CONTENT_VIEW[selectedView]}
+        </div>
       </Box>
     </ThemeProvider>
   )

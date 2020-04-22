@@ -10,8 +10,6 @@ interface Props {
 const Tasks: React.FC<Props> = ({ items }) => {
   return (
     <div className={styles.container}>
-      <h3>Shadow Virtualization - Chapters</h3>
-      <MenuBar />
       <TaskGrid items={items} />
     </div>
   )
