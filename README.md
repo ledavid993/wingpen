@@ -13,3 +13,12 @@ Wingpen is a document manager application. It lets you easily navigate through m
 
 [![Peek-2020-04-22-18-51.gif](https://s4.gifyu.com/images/Peek-2020-04-22-18-51.gif)](https://gifyu.com/image/lRiO)
 
+
+<h2>Development</h2>
+
+Projects is built with webpack 4
+Eslint (airbnb) and prettier for linting
+
+Start the project
+<h3>yarn start<h/h3>
+
