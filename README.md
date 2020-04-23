@@ -24,25 +24,31 @@ Eslint (airbnb) and prettier for linting
 Start the project
 <h3>yarn start<h/h3>
  
- <h2>Roadmap</h2>
+<h2>Roadmap</h2>
+ 
+ <h3>Near Future</h3>
+ 
+  More Rich Header
  
  Cloud Storage
  
  Desktop Application Version
  
- Export to doc
+ Dark Theme
  
  Word counts
  
- Word tag
+ Save file to computer
  
- Dark Theme
+ <h3>Distant Future</h3>
+ 
+ Export to doc
+ 
+ Word tag
  
  Real Time Collabration
  
  Style Template Loader
- 
- More Rich Header
  
  Login
  
