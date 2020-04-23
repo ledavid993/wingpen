@@ -30,26 +30,28 @@ Start the project
  
   More Rich Header
  
- Cloud Storage
- 
- Desktop Application Version
- 
- Dark Theme
- 
- Word counts
- 
- Save file to computer
+  Desktop Application Version
+
+  Dark Theme
+
+  Word counts
+
+  Save file to computer
  
  <h3>Distant Future</h3>
  
- Export to doc
+  Cloud Storage
  
- Word tag
- 
- Real Time Collabration
- 
- Style Template Loader
- 
- Login
+  Export to doc
+
+  Word tag
+
+  Real Time Collabration
+
+  Style Template Loader
+
+  Login
+  
+  D&D features for campaigning a novel with friends 
  
 
