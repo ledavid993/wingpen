@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { Route } from 'react-router-dom'
 import { filter } from 'ramda'
 import {
   Box,
   ThemeProvider,
   Breadcrumb,
   BreadcrumbItem,
+  Divider,
   BreadcrumbLink,
 } from '@chakra-ui/core'
 import { useSelector, useDispatch } from 'react-redux'
@@ -31,7 +33,6 @@ interface ContentView {
 }
 
 const Main = () => {
-  const [breadCrumb, setBreadCrumb] = useState()
   const {
     selectedView,
     projects,
@@ -75,13 +76,8 @@ const Main = () => {
           />
         </div>
         <div className={styles.cView}>
-          <Breadcrumb>
-            <BreadcrumbItem>
-              <BreadcrumbLink href="#">Home</BreadcrumbLink>
-            </BreadcrumbItem>
-          </Breadcrumb>
           <MenuBar />
-          {CONTENT_VIEW[selectedView]}
+          <Route to={selectedView}>{CONTENT_VIEW[selectedView]}</Route>
         </div>
       </Box>
     </ThemeProvider>
