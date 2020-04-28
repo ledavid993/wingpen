@@ -11,7 +11,7 @@ import styles from './TabItem.module.css'
 
 import { mainActions } from '@redux/actions'
 
-const { changeMainView } = mainActions
+const { changeMainView, setProject } = mainActions
 
 interface Props {
   name: string
@@ -39,9 +39,11 @@ const TabItem: React.FC<Props> = ({
 
     if (type === 'task') {
       if (!contains(category, openTask)) {
+        dispatch(setProject(project))
         dispatch(changeMainView('tasks'))
         setOpenTask((oldOpenTask: any) => [...oldOpenTask, category])
       } else {
+        dispatch(changeMainView('tasks'))
         setOpenTask((oldOpenTask: any) => without(category, oldOpenTask))
       }
     } else if (type === 'subtask') {

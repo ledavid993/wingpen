@@ -63,3 +63,7 @@
 .button div p {
   margin: 0;
 }
+
+.icons > svg {
+  padding: 0 14px;
+}

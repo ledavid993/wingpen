@@ -10,14 +10,16 @@ import {
 import { useSelector, useDispatch } from 'react-redux'
 import SVG from 'react-inlinesvg'
 
-import { MiddleSideBar, FirstSideBar, MenuBar } from '../components'
+import { MenuBar } from '../components'
 import DocumentView from './Document'
 import Projects from './Projects'
+import FirstSideBar from './FirstSideBar'
+import MiddleSideBar from './MiddleSideBar'
 import HomeView from './Home'
+import SubTasks from './SubTasks'
 import Tasks from './Tasks'
 import theme from '../theme'
 
-import Banner from '@assets/banner.svg'
 import styles from './Main.module.css'
 
 import { mainActions } from '@redux/actions'
@@ -30,9 +32,12 @@ interface ContentView {
 
 const Main = () => {
   const [breadCrumb, setBreadCrumb] = useState()
-  const { selectedView, projects, selectedItems } = useSelector(
-    ({ main }: any) => main,
-  )
+  const {
+    selectedView,
+    projects,
+    selectedItems,
+    selectedProject,
+  } = useSelector(({ main }: any) => main)
   const [whichProjectView, toggleWhichProjectView] = useState('')
 
   const dispatch = useDispatch()
@@ -49,7 +54,8 @@ const Main = () => {
     document: <DocumentView />,
     home: <HomeView />,
     projects: <Projects projects={projects} />,
-    tasks: <Tasks items={selectedItems} />,
+    tasks: <Tasks project={selectedProject} />,
+    subTasks: <SubTasks project={selectedItems} />,
   }
 
   return (

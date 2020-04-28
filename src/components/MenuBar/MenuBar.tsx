@@ -1,5 +1,5 @@
 import React from 'react'
-import { IoMdAddCircle } from 'react-icons/io'
+import { FaFilter, FaSortAlphaDown } from 'react-icons/fa'
 import {} from 'react-spring'
 
 import styles from './MenuBar.module.css'
@@ -9,7 +9,10 @@ const MenuBar = () => {
     <div className={styles.container}>
       <div></div>
       <div>
-        <div>Filter</div>
+        <div className={styles.icons}>
+          <FaFilter />
+          <FaSortAlphaDown />
+        </div>
       </div>
     </div>
   )

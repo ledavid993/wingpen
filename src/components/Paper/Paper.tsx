@@ -8,16 +8,13 @@ import styles from './Paper.module.css'
 
 import { mainActions } from '@redux/actions'
 
-const { changeMainView } = mainActions
-
 type Props = {
   newBook?: boolean
   project?: any
+  handleBookClick: (project: any) => void
 }
 
-const Paper: React.FC<Props> = ({ newBook, project }) => {
-  const dispatch = useDispatch()
-
+const Paper: React.FC<Props> = ({ newBook, project, handleBookClick }) => {
   const renderBookView = () => {
     if (newBook) {
       return (
@@ -45,7 +42,9 @@ const Paper: React.FC<Props> = ({ newBook, project }) => {
       <>
         <div
           className={styles.book}
-          onClick={() => dispatch(changeMainView('tasks'))}
+          onClick={() => {
+            handleBookClick(project)
+          }}
         >
           <div className={clsx(styles.bookCover, styles.cover1)}>
             <div className={styles.effect}></div>
