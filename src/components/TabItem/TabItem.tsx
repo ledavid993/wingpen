@@ -59,7 +59,7 @@ const TabItem: React.FC<Props> = ({
 
   return (
     <>
-      <div className={styles.container} onClick={() => onProjectClick(name)}>
+      <div className={styles.container} onClick={() => onProjectClick(project)}>
         <div className={styles.title}>
           <span>
             <FaBook />

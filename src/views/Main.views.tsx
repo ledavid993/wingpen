@@ -26,7 +26,7 @@ import styles from './Main.module.css'
 
 import { mainActions } from '@redux/actions'
 
-const { changeMainView } = mainActions
+const { changeMainView, setProject } = mainActions
 
 interface ContentView {
   [contentView: string]: JSX.Element
@@ -43,10 +43,11 @@ const Main = () => {
 
   const dispatch = useDispatch()
 
-  const onProjectClick = (project: string) => {
-    toggleWhichProjectView(project)
-    dispatch(changeMainView('projects'))
-    if (project === whichProjectView) {
+  const onProjectClick = (project: any) => {
+    toggleWhichProjectView(project.project_name)
+    dispatch(setProject(project))
+    dispatch(changeMainView('tasks'))
+    if (project.project_name === whichProjectView) {
       toggleWhichProjectView('')
     }
   }
