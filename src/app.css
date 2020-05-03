@@ -1,11 +1,4 @@
-@font-face {
-  font-family: 'Titillium';
-  font-style: normal;
-  font-weight: normal;
-  src: url('./assets/font/Titillium/Titillium-Regular.otf') format('opentype');
-}
-
 .app-wrapper {
-  font-family: 'Helvetica Neue', sans-serif;
+  font-family: 'Istok Web', sans-serif;
   color: rgba(0, 0, 0, 0.7);
 }

@@ -12,27 +12,24 @@ type Props = {
   newBook?: boolean
   project?: any
   handleBookClick: (project: any) => void
+  onOpen?: () => void
 }
 
-const Paper: React.FC<Props> = ({ newBook, project, handleBookClick }) => {
+const Paper: React.FC<Props> = ({
+  newBook,
+  project,
+  handleBookClick,
+  onOpen,
+}) => {
   const renderBookView = () => {
     if (newBook) {
       return (
         <>
-          <div className={clsx(styles.book, styles.emptyBook)}>
+          <div className={clsx(styles.book, styles.emptyBook)} onClick={onOpen}>
             <div className={styles.emptyAdd}>
               <h2>+</h2>
               <h3>New Project</h3>
             </div>
-          </div>
-          <div className={styles.emptyInput}>
-            <Input
-              style={{ boxSizing: 'border-box' }}
-              placeholder="Enter Name"
-              border="none"
-              borderBottom="1px solid rgba(0, 0, 0, .8)"
-              borderRadius="none"
-            />
           </div>
         </>
       )
