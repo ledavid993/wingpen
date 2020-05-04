@@ -1,46 +1,53 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { Route } from 'react-router-dom'
 import { filter } from 'ramda'
 import {
   Box,
   ThemeProvider,
   Breadcrumb,
   BreadcrumbItem,
+  Divider,
   BreadcrumbLink,
 } from '@chakra-ui/core'
 import { useSelector, useDispatch } from 'react-redux'
 import SVG from 'react-inlinesvg'
 
-import { MiddleSideBar, FirstSideBar, MenuBar } from '../components'
+import { MenuBar } from '../components'
 import DocumentView from './Document'
 import Projects from './Projects'
+import FirstSideBar from './FirstSideBar'
+import MiddleSideBar from './MiddleSideBar'
 import HomeView from './Home'
+import SubTasks from './SubTasks'
 import Tasks from './Tasks'
 import theme from '../theme'
 
-import Banner from '@assets/banner.svg'
 import styles from './Main.module.css'
 
 import { mainActions } from '@redux/actions'
 
-const { changeMainView } = mainActions
+const { changeMainView, setProject } = mainActions
 
 interface ContentView {
   [contentView: string]: JSX.Element
 }
 
 const Main = () => {
-  const [breadCrumb, setBreadCrumb] = useState()
-  const { selectedView, projects, selectedItems } = useSelector(
-    ({ main }: any) => main,
-  )
+  const {
+    selectedView,
+    projects,
+    selectedItems,
+    selectedProject,
+  } = useSelector(({ main }: any) => main)
   const [whichProjectView, toggleWhichProjectView] = useState('')
 
   const dispatch = useDispatch()
 
-  const onProjectClick = (project: string) => {
-    toggleWhichProjectView(project)
-    dispatch(changeMainView('projects'))
-    if (project === whichProjectView) {
+  const onProjectClick = (project: any) => {
+    toggleWhichProjectView(project.project_name)
+    dispatch(setProject(project))
+    dispatch(changeMainView('tasks'))
+    if (project.project_name === whichProjectView) {
       toggleWhichProjectView('')
     }
   }
@@ -49,7 +56,8 @@ const Main = () => {
     document: <DocumentView />,
     home: <HomeView />,
     projects: <Projects projects={projects} />,
-    tasks: <Tasks items={selectedItems} />,
+    tasks: <Tasks project={selectedProject} />,
+    subTasks: <SubTasks project={selectedItems} />,
   }
 
   return (
@@ -69,13 +77,8 @@ const Main = () => {
           />
         </div>
         <div className={styles.cView}>
-          <Breadcrumb>
-            <BreadcrumbItem>
-              <BreadcrumbLink href="#">Home</BreadcrumbLink>
-            </BreadcrumbItem>
-          </Breadcrumb>
           <MenuBar />
-          {CONTENT_VIEW[selectedView]}
+          <Route to={selectedView}>{CONTENT_VIEW[selectedView]}</Route>
         </div>
       </Box>
     </ThemeProvider>

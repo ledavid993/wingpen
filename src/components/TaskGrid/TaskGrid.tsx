@@ -1,26 +1,19 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
 
 import styles from './TaskGrid.module.css'
 
-import { mainActions } from '@redux/actions'
-
-const { changeMainView } = mainActions
-
 interface Props {
-  items: any
+  data: any
+  handleProjectClick: (items: any) => void
 }
 
-const TaskGrid: React.FC<Props> = ({ items }) => {
-  const dispatch = useDispatch()
-
+const TaskGrid: React.FC<Props> = ({ data, handleProjectClick }) => {
   return (
     <div className={styles.grid}>
-      {items.map((item: any) => (
-        <div onClick={() => dispatch(changeMainView('document'))}>
+      {data.map(({ category, name, items }: any) => (
+        <div onClick={() => handleProjectClick(items)}>
           <div className={styles.letter}>
-            <p>Chapter 1</p>
-            <p>{item.name}</p>
+            <p>{category || name}</p>
           </div>
         </div>
       ))}

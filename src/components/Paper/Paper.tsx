@@ -8,34 +8,28 @@ import styles from './Paper.module.css'
 
 import { mainActions } from '@redux/actions'
 
-const { changeMainView } = mainActions
-
 type Props = {
   newBook?: boolean
   project?: any
+  handleBookClick: (project: any) => void
+  onOpen?: () => void
 }
 
-const Paper: React.FC<Props> = ({ newBook, project }) => {
-  const dispatch = useDispatch()
-
+const Paper: React.FC<Props> = ({
+  newBook,
+  project,
+  handleBookClick,
+  onOpen,
+}) => {
   const renderBookView = () => {
     if (newBook) {
       return (
         <>
-          <div className={clsx(styles.book, styles.emptyBook)}>
+          <div className={clsx(styles.book, styles.emptyBook)} onClick={onOpen}>
             <div className={styles.emptyAdd}>
               <h2>+</h2>
               <h3>New Project</h3>
             </div>
-          </div>
-          <div className={styles.emptyInput}>
-            <Input
-              style={{ boxSizing: 'border-box' }}
-              placeholder="Enter Name"
-              border="none"
-              borderBottom="1px solid rgba(0, 0, 0, .8)"
-              borderRadius="none"
-            />
           </div>
         </>
       )
@@ -45,7 +39,9 @@ const Paper: React.FC<Props> = ({ newBook, project }) => {
       <>
         <div
           className={styles.book}
-          onClick={() => dispatch(changeMainView('tasks'))}
+          onClick={() => {
+            handleBookClick(project)
+          }}
         >
           <div className={clsx(styles.bookCover, styles.cover1)}>
             <div className={styles.effect}></div>

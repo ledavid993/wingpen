@@ -4,16 +4,21 @@ import styles from './ProjectGrid.module.css'
 import Paper from '../Paper'
 
 interface Props {
-  onAddProject: () => void
+  handleBookClick: (project: any) => void
   projects: any
+  onOpen: () => void
 }
 
-const ProjectGrid: React.FC<Props> = ({ onAddProject, projects }) => {
+const ProjectGrid: React.FC<Props> = ({
+  onOpen,
+  handleBookClick,
+  projects,
+}) => {
   return (
-    <div className={styles.container} onClick={() => onAddProject()}>
-      <Paper newBook />
+    <div className={styles.container}>
+      <Paper newBook handleBookClick={handleBookClick} onOpen={onOpen} />
       {projects.map((project: any) => (
-        <Paper project={project} />
+        <Paper project={project} handleBookClick={handleBookClick} />
       ))}
     </div>
   )

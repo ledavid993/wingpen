@@ -1,0 +1,25 @@
+.container {
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 500;
+}
+
+.innerDialog {
+  padding: 15px;
+  min-height: 200px;
+  min-width: 350px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 600;
+  background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
+  border-radius: 5px;
+}
+
+.closed {
+  display: none;
+}
